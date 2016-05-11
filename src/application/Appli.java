@@ -5,17 +5,69 @@
  */
 package application;
 
+import accesAuxDonnees.DaoVip;
+import accesAuxDonnees.SourceMySql;
+import ihm.FenetreApplication;
+import ihm.FenetreIdentification;
+import java.net.PasswordAuthentication;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.sql.DataSource;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import modele.ModeleJTable;
+
 /**
  *
  * @author cyrille
  */
 public class Appli {
 
-    /**
-     * @param args the command line arguments
-     */
+    private static DataSource laSourceDeDonnees;
+    private static Connection laConnexion;
+    private static DaoVip daoVip;
+    
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        // Look and Feel windows
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            System.out.print(e.getMessage());
+        }
+        
+        boolean etat = false;
+        do {
+            FenetreIdentification fi = new FenetreIdentification(null);
+            PasswordAuthentication login = fi.identifier();
+            try {
+                laSourceDeDonnees = SourceMySql.getSource(login);
+                laConnexion = laSourceDeDonnees.getConnection();
+                etat = true;
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "login incorrect : " + ex.getMessage(),
+                        "avertissement", JOptionPane.WARNING_MESSAGE);
+            }
+        } while (etat == false);
+        
+        try {
+            // les DAO nécessaires
+            daoVip = new DaoVip(laConnexion);
+            // les modèles de données avec le DAO à partir duquel se feront les échanges de données
+            final ModeleJTable leModele = new ModeleJTable(daoVip);
+            // la fenetre principale de l'application qui tourne dans l'EDT
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new FenetreApplication(leModele).setVisible(true);
+                }
+            });
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "problème dans la création des objets nécessaires" + ex.getMessage(),
+                    "avertissement", JOptionPane.WARNING_MESSAGE);
+        }
     }
     
 }
