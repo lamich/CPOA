@@ -1,0 +1,75 @@
+header
+{
+	
+	background-color: #272727;
+	height:150px;
+	font-family: "verdana",sans serif;
+	font-variant: small-caps;
+	
+}
+
+h1
+{
+	padding-top:30px;
+	text-align:center;
+	color:white;
+
+}
+
+#navigation {
+ 
+  list-style: none;
+  margin:auto ;
+  width:560px;
+
+}
+
+#navigation li {
+	display:inline;
+	height:30px;
+}
+
+
+#navigation li  a{
+	display:inline-block;
+	text-decoration:none;
+	color:#272727;
+	width:160px;
+	margin:auto;
+	text-align:center;
+	background: white ;
+  border: 1px solid black ;
+  margin-bottom: 1px ;
+  
+  border-radius:5px;
+  padding:10px;
+  
+  font-weight:bold;
+  font-size:22px;
+}
+
+#navigation :hover{
+	
+	background:#272727;
+	color:#fdaf17;
+	border:1px solid white;
+	
+}
+
+
+section
+{
+	margin-top:30px;
+}
+
+.AfficheFilm img
+{
+	width:200px;
+}
+
+
+
+footer
+{
+	text-align:center;
+}

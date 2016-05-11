@@ -64,3 +64,5 @@ $RECYCLE.BIN/
 /dist/
 /build/
 /nbproject/private/
+/Application/dist/
+/Application/build/
