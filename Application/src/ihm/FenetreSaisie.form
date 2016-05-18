@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupCodeStatut">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupCivilite">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lbDateNaissanceVip" max="32767" attributes="0"/>
+                          <Component id="lbCodeStatutVip" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbCiviliteVip" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbLieuNaissanceVip" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbCodeRoleVip" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbNomPaysVip" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbPrenomVip" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbNomVip" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jRbActeur" min="-2" max="-2" attributes="0"/>
+                          <Component id="jRbMarie" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jTFNomVip" max="32767" attributes="0"/>
+                              <Component id="jTFPrenomVip" max="32767" attributes="0"/>
+                              <Component id="jComboBoxNomPays" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jTFLieuNaissanceVip" alignment="0" pref="80" max="32767" attributes="0"/>
+                                      <Component id="jTFDateNaissanceVip" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jRbFemme" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jRbHomme" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btCalendrier" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRbRealisateur" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRbCelibataire" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btValid" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="8" pref="35" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbNomVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFNomVip" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbPrenomVip" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFPrenomVip" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbCiviliteVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRbFemme" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRbHomme" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbDateNaissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btCalendrier" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFDateNaissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbLieuNaissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFLieuNaissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbCodeRoleVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRbActeur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRbRealisateur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbNomPaysVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxNomPays" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbCodeStatutVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRbMarie" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRbCelibataire" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btValid" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lbNomVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbPrenomVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prenom"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbCiviliteVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Civilit&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbDateNaissanceVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date de naissance"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbLieuNaissanceVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lieu de naissance"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbCodeRoleVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Code role"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbNomPaysVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom pays"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbCodeStatutVip">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Code statut"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTFNomVip">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[80, 20]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[80, 20]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFNomVipActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTFPrenomVip">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxNomPays">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxNomPaysActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRbMarie">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupCodeStatut"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Mari&#xe9;(e)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRbCelibataire">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupCodeStatut"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="C&#xe9;libataire"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btCalendrier">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Calendrier"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTFDateNaissanceVip">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRbFemme">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupCivilite"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Femme"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRbHomme">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroupCivilite"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Homme"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTFLieuNaissanceVip">
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRbActeur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Acteur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRbRealisateur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="R&#xe9;alisateur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btValid">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valider"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btValidActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
