@@ -6,6 +6,7 @@
 package ihm;
 
 import javax.swing.JOptionPane;
+import metier.Pays;
 import metier.VIP;
 
 /**
@@ -46,7 +47,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
         lbCodeStatutVip = new javax.swing.JLabel();
         jTFNomVip = new javax.swing.JTextField();
         jTFPrenomVip = new javax.swing.JTextField();
-        jComboBoxNomPays = new javax.swing.JComboBox<>();
+        jComboBoxNomPays = new javax.swing.JComboBox<String>();
         jRbMarie = new javax.swing.JRadioButton();
         jRbCelibataire = new javax.swing.JRadioButton();
         btCalendrier = new javax.swing.JButton();
@@ -84,7 +85,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxNomPays.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxNomPays.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxNomPays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxNomPaysActionPerformed(evt);
@@ -106,6 +107,12 @@ public class FenetreSaisie extends javax.swing.JDialog {
 
         buttonGroupCivilite.add(jRbHomme);
         jRbHomme.setText("Homme");
+
+        jTFLieuNaissanceVip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFLieuNaissanceVipActionPerformed(evt);
+            }
+        });
 
         jRbActeur.setText("Acteur");
 
@@ -240,8 +247,51 @@ public class FenetreSaisie extends javax.swing.JDialog {
                  }
             }
             
+             if(jTFLieuNaissanceVip.getText().isEmpty())
+             {
+                 throw new Exception("champ Ville de naissance vide");
+             }
+             vip.setLieuNaissance(jTFLieuNaissanceVip.getText());
             
-            
+            if(!jRbActeur.isSelected() && !jRbRealisateur.isSelected())
+            {
+                throw new Exception("champ code role vide");
+            }
+            else
+            {
+                if(jRbActeur.isSelected()){
+                     vip.setCodeRole("A");
+                }
+                 
+                if(jRbRealisateur.isSelected())
+                {
+                     vip.setCodeRole("R");
+                }
+                
+                if(jRbRealisateur.isSelected() && jRbActeur.isSelected())
+                {
+                     vip.setCodeRole("AR");
+                }
+            }
+         //   if(jComboBoxNomPays.SelectedItem(Pays))
+         //   {
+                
+         //   }
+            if(!jRbMarie.isSelected() && !jRbCelibataire.isSelected())
+            {
+                throw new Exception("champ civilité vide");
+            }
+            else
+            {
+                if(jRbMarie.isSelected()){
+                     vip.setCodeStatut("M");
+                }
+                 
+                if(jRbMarie.isSelected())
+                {
+                     vip.setCodeStatut("C");
+                }
+            }
             
             
             
@@ -258,6 +308,10 @@ public class FenetreSaisie extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btValidActionPerformed
+
+    private void jTFLieuNaissanceVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFLieuNaissanceVipActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jTFLieuNaissanceVipActionPerformed
 
 public boolean doModal() {
         setVisible(true);

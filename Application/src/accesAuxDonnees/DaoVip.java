@@ -30,7 +30,7 @@ public class DaoVip {
         ResultSet rset = pstmt.executeQuery(requete);
         while (rset.next()) {       // traitement du résulat
             
-            String numVip = rset.getString(1);
+            String numVip = Integer.toString(rset.getInt(1));
             String nomVip = rset.getString(2);
             String prenomVip = rset.getString(3);
             String civilite = rset.getString(4);

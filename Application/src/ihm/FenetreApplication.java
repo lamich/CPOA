@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import metier.VIP;
+import modele.ModeleJComboBox;
 import modele.ModeleJTable;
 
 /**
@@ -17,9 +18,11 @@ import modele.ModeleJTable;
 public class FenetreApplication extends javax.swing.JFrame {
 
     private ModeleJTable leModele;
+    private ModeleJComboBox leModeleComboBox;
 
-    public FenetreApplication(ModeleJTable leModele) {
+    public FenetreApplication(ModeleJTable leModele,ModeleJComboBox leModeleComboBox) {
         this.leModele = leModele;
+        this.leModeleComboBox = leModeleComboBox;
         // initialisation
         initComponents();
         // affichage
