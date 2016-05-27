@@ -5,6 +5,9 @@ header
 	height:150px;
 	font-family: "verdana",sans serif;
 	font-variant: small-caps;
+	margin-top:-25px;
+	margin-left:-20px;
+	margin-right:-20px;
 	
 }
 
@@ -38,24 +41,26 @@ h1
 	margin:auto;
 	text-align:center;
 	background: white ;
-  border: 1px solid black ;
-  margin-bottom: 1px ;
+	border: 1px solid black ;
+	margin-bottom: 1px ;
   
-  border-radius:5px;
-  padding:10px;
+	border-radius:5px;
+	padding:10px;
   
-  font-weight:bold;
-  font-size:22px;
+	font-weight:bold;
+	font-size:22px;
 }
 
 #navigation :hover{
 	
 	background:#272727;
 	color:#fdaf17;
-	border:1px solid white;
-	
+
 }
 
+#navigation li a:hover{
+	border:1px solid white;
+}
 
 section
 {
@@ -65,6 +70,48 @@ section
 .AfficheFilm img
 {
 	width:200px;
+	border-radius:20px;
+	
+}
+
+.AfficheFilm
+{
+	text-align:center;
+	display:inline-block;
+	padding:20px;
+	border-radius:20px;
+	background:#333;
+	margin-left:30px;
+	margin-right:30px;
+	margin-top:20px;
+	margin-bottom:30px;
+	display:inline-block;
+	width:200px;
+	
+}
+
+.AfficheFilm .titreFilm
+{
+	color:white;
+	padding:5px;
+	margin-top:30px;
+	text-decoration:none;
+	font-weight:bold;
+	font-size:20px;
+}
+
+.detailsAffiche
+{
+	width:300px;
+}
+
+.erreur
+{
+	background-color:#FF3333;
+	text-align:center;
+	font-weight:bold;
+	font-size:22px;
+	
 }
 
 
