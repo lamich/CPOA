@@ -52,20 +52,17 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jTFNomVip" max="32767" attributes="0"/>
                               <Component id="jTFPrenomVip" max="32767" attributes="0"/>
-                              <Component id="jComboBoxNomPays" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jDCDateNaissance" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jTFLieuNaissanceVip" alignment="0" pref="80" max="32767" attributes="0"/>
-                                      <Component id="jTFDateNaissanceVip" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jComboBoxNomPays" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTFLieuNaissanceVip" alignment="0" pref="80" max="32767" attributes="0"/>
                                   <Component id="jRbFemme" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jRbHomme" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btCalendrier" min="-2" max="-2" attributes="0"/>
                                   <Component id="jRbRealisateur" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jRbCelibataire" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -77,7 +74,7 @@
                       <Component id="btValid" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="8" pref="35" max="32767" attributes="0"/>
+              <EmptySpace min="10" pref="41" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,10 +98,9 @@
                   <Component id="jRbHomme" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbDateNaissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btCalendrier" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFDateNaissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbDateNaissanceVip" min="-2" max="-2" attributes="0"/>
+                  <Component id="jDCDateNaissance" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -130,7 +126,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btValid" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -193,13 +189,8 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxNomPays">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="leModelCombo" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -223,16 +214,6 @@
           <ComponentRef name="buttonGroupCodeStatut"/>
         </Property>
         <Property name="text" type="java.lang.String" value="C&#xe9;libataire"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btCalendrier">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Calendrier"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTFDateNaissanceVip">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRbFemme">
@@ -273,6 +254,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btValidActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDCDateNaissance">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy MM dd"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

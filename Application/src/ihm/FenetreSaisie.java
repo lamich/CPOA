@@ -5,9 +5,11 @@
  */
 package ihm;
 
+import java.sql.Date;
 import javax.swing.JOptionPane;
 import metier.Pays;
 import metier.VIP;
+import modele.ModeleJComboBox;
 
 /**
  *
@@ -17,13 +19,20 @@ public class FenetreSaisie extends javax.swing.JDialog {
 
     private VIP vip;
     private boolean etatSortie;
+    private ModeleJComboBox leModelCombo;
     
-    public FenetreSaisie(java.awt.Frame parent, VIP vip) {
+    public FenetreSaisie(java.awt.Frame parent, VIP vip,ModeleJComboBox leModelCombo) {
         super(parent, true);  // mode modal       
         this.vip = vip;
+        this.leModelCombo = leModelCombo;
         etatSortie = false;
         initComponents();
     }
+    public boolean doModal() {
+        setVisible(true);
+        return etatSortie;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,17 +56,16 @@ public class FenetreSaisie extends javax.swing.JDialog {
         lbCodeStatutVip = new javax.swing.JLabel();
         jTFNomVip = new javax.swing.JTextField();
         jTFPrenomVip = new javax.swing.JTextField();
-        jComboBoxNomPays = new javax.swing.JComboBox<String>();
+        jComboBoxNomPays = new javax.swing.JComboBox<>();
         jRbMarie = new javax.swing.JRadioButton();
         jRbCelibataire = new javax.swing.JRadioButton();
-        btCalendrier = new javax.swing.JButton();
-        jTFDateNaissanceVip = new javax.swing.JTextField();
         jRbFemme = new javax.swing.JRadioButton();
         jRbHomme = new javax.swing.JRadioButton();
         jTFLieuNaissanceVip = new javax.swing.JTextField();
         jRbActeur = new javax.swing.JRadioButton();
         jRbRealisateur = new javax.swing.JRadioButton();
         btValid = new javax.swing.JButton();
+        jDCDateNaissance = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,7 +93,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxNomPays.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxNomPays.setModel(leModelCombo);
         jComboBoxNomPays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxNomPaysActionPerformed(evt);
@@ -97,10 +105,6 @@ public class FenetreSaisie extends javax.swing.JDialog {
 
         buttonGroupCodeStatut.add(jRbCelibataire);
         jRbCelibataire.setText("Célibataire");
-
-        btCalendrier.setText("Calendrier");
-
-        jTFDateNaissanceVip.setEditable(false);
 
         buttonGroupCivilite.add(jRbFemme);
         jRbFemme.setText("Femme");
@@ -125,6 +129,8 @@ public class FenetreSaisie extends javax.swing.JDialog {
             }
         });
 
+        jDCDateNaissance.setDateFormatString("yyyy MM dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,24 +154,22 @@ public class FenetreSaisie extends javax.swing.JDialog {
                             .addComponent(jRbMarie)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTFNomVip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTFPrenomVip)
-                                .addComponent(jComboBoxNomPays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTFPrenomVip))
+                            .addComponent(jDCDateNaissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTFLieuNaissanceVip, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                        .addComponent(jTFDateNaissanceVip, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jRbFemme))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jComboBoxNomPays, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTFLieuNaissanceVip, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                    .addComponent(jRbFemme, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRbHomme)
-                                    .addComponent(btCalendrier)
                                     .addComponent(jRbRealisateur)
                                     .addComponent(jRbCelibataire)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(btValid)))
-                .addGap(8, 35, Short.MAX_VALUE))
+                .addGap(10, 41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,10 +188,9 @@ public class FenetreSaisie extends javax.swing.JDialog {
                     .addComponent(jRbFemme)
                     .addComponent(jRbHomme))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbDateNaissanceVip)
-                    .addComponent(btCalendrier)
-                    .addComponent(jTFDateNaissanceVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDCDateNaissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbLieuNaissanceVip)
@@ -208,7 +211,7 @@ public class FenetreSaisie extends javax.swing.JDialog {
                     .addComponent(jRbCelibataire))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btValid)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -246,6 +249,11 @@ public class FenetreSaisie extends javax.swing.JDialog {
                      vip.setCivilite("Femme");
                  }
             }
+            if(jDCDateNaissance.getCalendar()==null){
+                 throw new Exception("champ Date de naissance mal rempli");
+            }
+            java.sql.Date temp = new java.sql.Date(jDCDateNaissance.getDate().getTime());
+            vip.setDateNaissance(temp);
             
              if(jTFLieuNaissanceVip.getText().isEmpty())
              {
@@ -273,35 +281,23 @@ public class FenetreSaisie extends javax.swing.JDialog {
                      vip.setCodeRole("AR");
                 }
             }
-         //   if(jComboBoxNomPays.SelectedItem(Pays))
-         //   {
-                
-         //   }
+ 
+            vip.setNomPays(jComboBoxNomPays.getSelectedItem().toString());
+            
             if(!jRbMarie.isSelected() && !jRbCelibataire.isSelected())
             {
-                throw new Exception("champ civilité vide");
+                throw new Exception("champ code Statut vide");
             }
             else
             {
                 if(jRbMarie.isSelected()){
                      vip.setCodeStatut("M");
                 }
-                 
-                if(jRbMarie.isSelected())
+                else
                 {
                      vip.setCodeStatut("C");
                 }
             }
-            
-            
-            
-            
-             
-             
-            
-            
-            
-
             etatSortie = true;
             this.dispose();
         } catch (Exception e) {
@@ -313,25 +309,20 @@ public class FenetreSaisie extends javax.swing.JDialog {
                 // TODO add your handling code here:
     }//GEN-LAST:event_jTFLieuNaissanceVipActionPerformed
 
-public boolean doModal() {
-        setVisible(true);
-        return etatSortie;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCalendrier;
     private javax.swing.JButton btValid;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupCivilite;
     private javax.swing.ButtonGroup buttonGroupCodeStatut;
     private javax.swing.JComboBox<String> jComboBoxNomPays;
+    private com.toedter.calendar.JDateChooser jDCDateNaissance;
     private javax.swing.JRadioButton jRbActeur;
     private javax.swing.JRadioButton jRbCelibataire;
     private javax.swing.JRadioButton jRbFemme;
     private javax.swing.JRadioButton jRbHomme;
     private javax.swing.JRadioButton jRbMarie;
     private javax.swing.JRadioButton jRbRealisateur;
-    private javax.swing.JTextField jTFDateNaissanceVip;
     private javax.swing.JTextField jTFLieuNaissanceVip;
     private javax.swing.JTextField jTFNomVip;
     private javax.swing.JTextField jTFPrenomVip;

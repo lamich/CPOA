@@ -18,7 +18,7 @@ import metier.VIP;
 public class ModeleJTable extends AbstractTableModel {
     // le conteneur de données
 
-    private List<VIP> leConteneur;
+    public List<VIP> leConteneur;
     // le titre des champs du conteneur
     private String[] titre;
     // l'objet DAO pour mettre à jour le conteneur
@@ -30,7 +30,7 @@ public class ModeleJTable extends AbstractTableModel {
         // définition des noms du champ
         this.titre = new String[]{"numVip", "nomVip", "prenomVip", "civilite", "dateNaissance", "lieuNaissance", "codeRole", "nomPays", "codeStatut"};
         // l'objet DAO utilisé
-        this.leDaoVip= leDaoVip;
+        this.leDaoVip = leDaoVip;
     }
 
     @Override
@@ -46,43 +46,35 @@ public class ModeleJTable extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int column) {
         VIP Vip = leConteneur.get(row);
-        if  (column == 0) {
-            
+        if (column == 0) {
+
             return Vip.getNumVip();
-        }
-        else if (column == 1) {
-            
+        } else if (column == 1) {
+
             return Vip.getNomVip();
-        }
-        else if (column == 2) {
-            
+        } else if (column == 2) {
+
             return Vip.getPrenomVip();
-        }
-        else if  (column == 3) {
-            
+        } else if (column == 3) {
+
             return Vip.getCivilite();
-        }
-        else if  (column == 4) {
-            
+        } else if (column == 4) {
+
             return Vip.getDateNaissance();
-        }
-        else if  (column == 5) {
-            
+        } else if (column == 5) {
+
             return Vip.getLieuNaissance();
-        }
-        else if  (column == 6) {
-            
+        } else if (column == 6) {
+
             return Vip.getCodeRole();
-        }
-        else if  (column == 7) {
-            
+        } else if (column == 7) {
+
             return Vip.getNomPays();
-        }
-        else if  (column == 8) {
-            
+        } else if (column == 8) {
+
             return Vip.getCodeStatut();
         }
-        return 0;
+        return null;
     }
 
     @Override
@@ -90,21 +82,34 @@ public class ModeleJTable extends AbstractTableModel {
         return titre[column];
     }
 
-//    public void insererEmploye(VIP pays) throws SQLException {
-//        leDaoEmp.insererEmploye(pays);
-//        leConteneur.add(emp);
-//        this.fireTableDataChanged();
-//    }
+    public void insererVip(VIP Vip) {
+        try {
+            leDaoVip.insererVIP(Vip);
+            leConteneur.add(Vip);
+            this.fireTableDataChanged();
 
-//    public void supprimerEmploye(int ligne) throws SQLException {
-//        int numEmp = (int) getValueAt(ligne, 0);
-//        leDaoEmp.supprimerEmploye(numEmp);
-//        leConteneur.remove(ligne);
-//        this.fireTableDataChanged();
-//    }
+        } catch (Exception e) {
+            System.out.println("Exception insererVip modele : " + e.getMessage());
+        }
+    }
 
     public void chargerLesVip() throws SQLException {
         leDaoVip.lireLesVip(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
     }
+
+    public void supprimerVIP(int ligne)  {
+        String numVip = getValueAt(ligne, 0).toString();
+        leDaoVip.supprimerVip(numVip);
+        leConteneur.remove(ligne);
+        this.fireTableDataChanged();
+    }
+
+    public void rafraichir() throws SQLException {
+        leConteneur.clear();
+        leDaoVip.lireLesVip(leConteneur);
+        this.fireTableDataChanged();
+
+    }
+
 }

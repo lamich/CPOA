@@ -6,37 +6,50 @@
 package modele;
 
 import accesAuxDonnees.DaoPays;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractListModel;
+import javax.swing.ComboBoxModel;
 import metier.Pays;
 import metier.VIP;
 
 
-public class ModeleJComboBox extends AbstractListModel {
+public class ModeleJComboBox extends AbstractListModel implements ComboBoxModel {
      private List<Pays> leConteneur;
-    // le titre des champs du conteneur
-    private String[] titre;
     // l'objet DAO pour mettre à jour le conteneur
     private DaoPays leDaoPays;
+    private String selection = "France";
 
     public ModeleJComboBox(DaoPays leDaoPays) {
         // définition du conteneur d'étudiants
         this.leConteneur = new ArrayList<>();
-        // définition des noms du champ
-        this.titre = new String[]{"nomPays"};
         // l'objet DAO utilisé
         this.leDaoPays= leDaoPays;
+    }
+    public void chargerPays() throws SQLException {
+        leDaoPays.lireLesPays(leConteneur); 
     }
 
     @Override
     public int getSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return leConteneur.size();
     }
 
     @Override
     public Object getElementAt(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String pays = leConteneur.get(index).getNomPays();
+        return pays;
+    }
+
+    @Override
+    public void setSelectedItem(Object anItem) {
+        selection=(String) anItem;
+    }
+
+    @Override
+    public Object getSelectedItem() {
+        return selection;
     }
    
 }

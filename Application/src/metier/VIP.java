@@ -25,7 +25,7 @@ public class VIP {
        private String nomPays;
        private String codeStatut;
        
-       private static int numeroVip = 10026;
+       
        
 
     public VIP(String numVip, String nomVip, String prenomVip, String civilite, Date dateNaissance, String lieuNaissance, String codeRole, String nomPays, String codeStatut) {
@@ -40,19 +40,12 @@ public class VIP {
         this.codeStatut = codeStatut;
     }
 
-    public VIP(String nomVip, String civilite, Date dateNaissance, String lieuNaissance, String codeRole, String nomPays, String codeStatut) {
-        this.numVip = Integer.toString(numeroVip++);
-        this.nomVip = nomVip;
-        this.civilite = civilite;
-        this.dateNaissance = dateNaissance;
-        this.lieuNaissance = lieuNaissance;
-        this.codeRole = codeRole;
-        this.nomPays = nomPays;
-        this.codeStatut = codeStatut;
-    }
+
     
 
     public VIP() {
+        
+        
     }
 
 
@@ -92,6 +85,9 @@ public class VIP {
         return codeStatut;
     }
 
+   
+    
+
 
     public void setNumVip(String numVip) {
         this.numVip = numVip;
@@ -128,10 +124,4 @@ public class VIP {
     public void setCodeStatut(String codeStatut) {
         this.codeStatut = codeStatut;
     }
-
-       
-
-    
-       
-    
 }

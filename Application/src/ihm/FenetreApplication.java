@@ -28,6 +28,7 @@ public class FenetreApplication extends javax.swing.JFrame {
         // affichage
         try {
             leModele.chargerLesVip();
+            leModeleComboBox.chargerPays();
         } catch (Exception ex) {
             Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -44,27 +45,24 @@ public class FenetreApplication extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelVip = new javax.swing.JPanel();
-        laTableVip = new javax.swing.JTable();
         btAjouterVip = new javax.swing.JButton();
         btSupprimerVip = new javax.swing.JButton();
+        jSPVip = new javax.swing.JScrollPane();
+        jTableVip = new javax.swing.JTable();
         jPanelEvenement = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanelPhoto = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Affichage des employés");
-        setPreferredSize(new java.awt.Dimension(800, 550));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
-        laTableVip.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        laTableVip.setModel(leModele);
-        laTableVip.setPreferredSize(new java.awt.Dimension(500, 450));
-
-        btAjouterVip.setText("Ajpouter");
+        btAjouterVip.setText("Ajouter");
         btAjouterVip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAjouterVipActionPerformed(evt);
@@ -72,52 +70,61 @@ public class FenetreApplication extends javax.swing.JFrame {
         });
 
         btSupprimerVip.setText("Supprimer");
+        btSupprimerVip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSupprimerVipActionPerformed(evt);
+            }
+        });
+
+        jTableVip.setModel(leModele);
+        jSPVip.setViewportView(jTableVip);
 
         javax.swing.GroupLayout jPanelVipLayout = new javax.swing.GroupLayout(jPanelVip);
         jPanelVip.setLayout(jPanelVipLayout);
         jPanelVipLayout.setHorizontalGroup(
             jPanelVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVipLayout.createSequentialGroup()
+            .addGroup(jPanelVipLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanelVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAjouterVip)
-                    .addComponent(btSupprimerVip))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                .addComponent(laTableVip, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btSupprimerVip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAjouterVip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(jSPVip, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelVipLayout.setVerticalGroup(
             jPanelVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVipLayout.createSequentialGroup()
-                .addGroup(jPanelVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelVipLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(laTableVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelVipLayout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(btAjouterVip)
-                        .addGap(70, 70, 70)
-                        .addComponent(btSupprimerVip)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(170, 170, 170)
+                .addComponent(btAjouterVip)
+                .addGap(70, 70, 70)
+                .addComponent(btSupprimerVip)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVipLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSPVip, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         jTabbedPane1.addTab("VIP", jPanelVip);
+
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanelEvenementLayout = new javax.swing.GroupLayout(jPanelEvenement);
         jPanelEvenement.setLayout(jPanelEvenementLayout);
         jPanelEvenementLayout.setHorizontalGroup(
             jPanelEvenementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEvenementLayout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
-                .addComponent(jTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanelEvenementLayout.createSequentialGroup()
+                .addGap(265, 265, 265)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelEvenementLayout.setVerticalGroup(
             jPanelEvenementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEvenementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Evenement", jPanelEvenement);
@@ -126,11 +133,11 @@ public class FenetreApplication extends javax.swing.JFrame {
         jPanelPhoto.setLayout(jPanelPhotoLayout);
         jPanelPhotoLayout.setHorizontalGroup(
             jPanelPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
+            .addGap(0, 775, Short.MAX_VALUE)
         );
         jPanelPhotoLayout.setVerticalGroup(
             jPanelPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 471, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Photo", jPanelPhoto);
@@ -146,9 +153,9 @@ public class FenetreApplication extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -165,15 +172,26 @@ public class FenetreApplication extends javax.swing.JFrame {
 
     private void btAjouterVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAjouterVipActionPerformed
         try {
-            VIP vip = new VIP();
-            FenetreSaisie laSaisie = new FenetreSaisie(this, vip);
+            VIP Vip = new VIP();
+//            leModele.recuperer_numemro_dernier_vip();
+            FenetreSaisie laSaisie = new FenetreSaisie(this, Vip,leModeleComboBox);
             if (laSaisie.doModal() == true) {
-               
+            leModele.insererVip(Vip);
+            leModele.rafraichir();
             }
         } catch (Exception e) {
             System.out.println("Exception à l'insertion : " + e.getMessage());
         }
     }//GEN-LAST:event_btAjouterVipActionPerformed
+
+    private void btSupprimerVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSupprimerVipActionPerformed
+        try {
+            int ligne = jTableVip.getSelectedRow();
+            leModele.supprimerVIP(ligne);
+        } catch (Exception e) {
+            System.out.println("Exception à la suppression : " + e.getMessage());
+        }
+    }//GEN-LAST:event_btSupprimerVipActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAjouterVip;
@@ -181,8 +199,10 @@ public class FenetreApplication extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelEvenement;
     private javax.swing.JPanel jPanelPhoto;
     private javax.swing.JPanel jPanelVip;
+    private javax.swing.JScrollPane jSPVip;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable laTableVip;
+    private javax.swing.JTable jTableVip;
     // End of variables declaration//GEN-END:variables
 }
