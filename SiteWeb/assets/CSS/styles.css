@@ -87,17 +87,8 @@ section
 	margin-bottom:30px;
 	display:inline-block;
 	width:200px;
+	height:276px;
 	
-}
-
-.AfficheFilm .titreFilm
-{
-	color:white;
-	padding:5px;
-	margin-top:30px;
-	text-decoration:none;
-	font-weight:bold;
-	font-size:20px;
 }
 
 .detailsAffiche

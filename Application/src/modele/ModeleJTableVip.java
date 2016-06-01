@@ -15,7 +15,7 @@ import metier.VIP;
  *
  * @author Alain
  */
-public class ModeleJTable extends AbstractTableModel {
+public class ModeleJTableVip extends AbstractTableModel {
     // le conteneur de données
 
     public List<VIP> leConteneur;
@@ -24,7 +24,7 @@ public class ModeleJTable extends AbstractTableModel {
     // l'objet DAO pour mettre à jour le conteneur
     private DaoVip leDaoVip;
 
-    public ModeleJTable(DaoVip leDaoVip) {
+    public ModeleJTableVip(DaoVip leDaoVip) {
         // définition du conteneur d'étudiants
         this.leConteneur = new ArrayList<>();
         // définition des noms du champ

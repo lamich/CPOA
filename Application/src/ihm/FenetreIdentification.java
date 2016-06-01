@@ -120,7 +120,6 @@ public class FenetreIdentification extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Fermeture(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_Fermeture
-        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_Fermeture
 

@@ -5,6 +5,7 @@
  */
 package application;
 
+import accesAuxDonnees.DaoEvenement;
 import accesAuxDonnees.DaoPays;
 import accesAuxDonnees.DaoVip;
 import accesAuxDonnees.SourceMySql;
@@ -18,7 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modele.ModeleJComboBox;
-import modele.ModeleJTable;
+import modele.ModeleJTableEvenement;
+import modele.ModeleJTableVip;
 
 /**
  *
@@ -30,6 +32,7 @@ public class Appli {
     private static Connection laConnexion;
     private static DaoVip daoVip;
     private static DaoPays daoPays;
+    private static DaoEvenement daoEvenement;
     
     public static void main(String[] args) {
         
@@ -58,14 +61,16 @@ public class Appli {
             // les DAO nécessaires
             daoVip = new DaoVip(laConnexion);
             daoPays = new DaoPays(laConnexion);
+            daoEvenement = new DaoEvenement(laConnexion);
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
-            final ModeleJTable leModele = new ModeleJTable(daoVip);
+            final ModeleJTableVip leModeleVip = new ModeleJTableVip(daoVip);
             final ModeleJComboBox leModeleComboBox = new ModeleJComboBox(daoPays);
+            final ModeleJTableEvenement leModeleEvenement = new ModeleJTableEvenement(daoEvenement);
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new FenetreApplication(leModele,leModeleComboBox).setVisible(true);
+                    new FenetreApplication(leModeleVip,leModeleComboBox,leModeleEvenement).setVisible(true);
                 }
             });
         } catch (SQLException ex) {

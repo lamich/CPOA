@@ -5,9 +5,7 @@
  */
 package ihm;
 
-import java.sql.Date;
 import javax.swing.JOptionPane;
-import metier.Pays;
 import metier.VIP;
 import modele.ModeleJComboBox;
 
@@ -15,13 +13,13 @@ import modele.ModeleJComboBox;
  *
  * @author cyrille
  */
-public class FenetreSaisie extends javax.swing.JDialog {
+public class FenetreSaisieVip extends javax.swing.JDialog {
 
     private VIP vip;
     private boolean etatSortie;
     private ModeleJComboBox leModelCombo;
     
-    public FenetreSaisie(java.awt.Frame parent, VIP vip,ModeleJComboBox leModelCombo) {
+    public FenetreSaisieVip(java.awt.Frame parent, VIP vip,ModeleJComboBox leModelCombo) {
         super(parent, true);  // mode modal       
         this.vip = vip;
         this.leModelCombo = leModelCombo;
