@@ -40,13 +40,17 @@ public class VIP {
         this.codeStatut = codeStatut;
     }
 
-
+    public VIP(String numVip, String nomVip, String prenomVip) {
+        this.numVip = numVip;
+        this.nomVip = nomVip;
+        this.prenomVip = prenomVip;
+    }
     
 
-    public VIP() {
-        
-        
+    public VIP() { 
     }
+
+
 
 
     public String getNumVip() {

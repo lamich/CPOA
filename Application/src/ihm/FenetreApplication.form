@@ -27,26 +27,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="221" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jTextField1" min="-2" pref="221" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
           </Group>
+          <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" min="-2" pref="499" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,9 +69,8 @@
                           <Component id="btSupprimerVip" max="32767" attributes="0"/>
                           <Component id="btAjouterVip" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
-                      <Component id="jSPVip" min="-2" pref="561" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                      <Component id="jSPVip" min="-2" pref="571" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -87,12 +81,11 @@
                       <Component id="btAjouterVip" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="btSupprimerVip" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="192" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jSPVip" min="-2" pref="448" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSPVip" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -147,9 +140,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="500" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="jBAjouterMariage" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="555" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -158,8 +153,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="449" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="456" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="jBAjouterMariage" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -178,6 +178,14 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="jBAjouterMariage">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ajouter mariage"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAjouterMariageActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelPhoto">
@@ -193,7 +201,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="201" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="221" max="32767" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="574" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -202,7 +210,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="460" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="467" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

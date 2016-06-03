@@ -9,6 +9,8 @@ import accesAuxDonnees.DaoEvenement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 import metier.Evenement;
 
@@ -69,9 +71,33 @@ public class ModeleJTableEvenement extends AbstractTableModel {
     public String getColumnName(int column) {
         return titre[column];
     }
+
     public void chargerLesEvenement() throws SQLException {
-        leDaoEvenement.lireLesPays(leConteneur);
+        leDaoEvenement.lireLesEvenement(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
+    }
+
+    public void insererMariage(Evenement event) {
+
+        try {
+            leDaoEvenement.insererMariage(event);
+            leConteneur.add(event);
+            this.fireTableDataChanged();
+
+        } catch (Exception e) {
+            System.out.println("Exception insererVip modele : " + e.getMessage());
+        }
+
+    }
+
+    public void rafraichir() {
+        try {
+            leConteneur.clear();
+            leDaoEvenement.lireLesEvenement(leConteneur);
+            this.fireTableDataChanged();
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeleJTableMariage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

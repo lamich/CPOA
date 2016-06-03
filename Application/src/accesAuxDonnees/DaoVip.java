@@ -86,4 +86,21 @@ public class DaoVip {
             System.out.println("Exception sup DAO : " + e.getMessage());
         }
     }
+    
+    public void lireVipMariage(List<VIP> lesvip ) throws SQLException{
+        String requete = "select numVip, nomVip, prenomVip from VIP ";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        ResultSet rset = pstmt.executeQuery(requete);
+        while (rset.next()) {       // traitement du résulat
+
+            String numVip = Integer.toString(rset.getInt(1));
+            String nomVip = rset.getString(2);
+            String prenomVip = rset.getString(3);
+            VIP temp = new VIP(numVip, nomVip, prenomVip);
+            lesvip.add(temp);
+
+        }
+        rset.close();
+        pstmt.close();
+    }
 }

@@ -23,7 +23,7 @@ public class DaoEvenement {
     public DaoEvenement(Connection connexion) {
         this.connexion = connexion;
     }
-    public void lireLesPays(List<Evenement> lesEvenement) throws SQLException {    
+    public void lireLesEvenement(List<Evenement> lesEvenement) throws SQLException {    
         String requete = "select * from EVENEMENT ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
@@ -41,5 +41,23 @@ public class DaoEvenement {
         }
         rset.close();
         pstmt.close();     
-    } 
+    }
+    
+    public void insererMariage(Evenement event){
+        String requete = "insert into EVENEMENT (numVip, dateMariage, numConjoint, lieuMariage) values (?,?,?,?)";
+        PreparedStatement pstmt;
+        try {
+            pstmt = connexion.prepareStatement(requete);
+
+            pstmt.setInt(1, event.getNumVip());
+            pstmt.setDate(2, event.getDateMariage());
+            pstmt.setInt(3, event.getNumConjoint());
+            pstmt.setString(4, event.getLieuMariage());
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            System.out.println("Exception DAO : " + e.getMessage());
+        }
+    }
+    
 }

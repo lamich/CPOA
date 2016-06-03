@@ -20,6 +20,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modele.ModeleJComboBox;
 import modele.ModeleJTableEvenement;
+import modele.ModeleJTableMariage;
 import modele.ModeleJTableVip;
 
 /**
@@ -66,11 +67,12 @@ public class Appli {
             final ModeleJTableVip leModeleVip = new ModeleJTableVip(daoVip);
             final ModeleJComboBox leModeleComboBox = new ModeleJComboBox(daoPays);
             final ModeleJTableEvenement leModeleEvenement = new ModeleJTableEvenement(daoEvenement);
+            final ModeleJTableMariage leModelMariage = new ModeleJTableMariage(daoVip);
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new FenetreApplication(leModeleVip,leModeleComboBox,leModeleEvenement).setVisible(true);
+                    new FenetreApplication(leModeleVip,leModeleComboBox,leModeleEvenement,leModelMariage).setVisible(true);
                 }
             });
         } catch (SQLException ex) {

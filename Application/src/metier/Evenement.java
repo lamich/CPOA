@@ -25,6 +25,14 @@ public class Evenement {
         this.dateDivorce = dateDivorce;
     }
 
+    public Evenement(int numVip, Date dateMariage, int numConjoint, String lieuMariage) {
+        this.numVip = numVip;
+        this.dateMariage = dateMariage;
+        this.numConjoint = numConjoint;
+        this.lieuMariage = lieuMariage;
+
+    }
+
     public int getNumVip() {
         return numVip;
     }
