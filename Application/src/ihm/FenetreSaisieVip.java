@@ -68,6 +68,7 @@ public class FenetreSaisieVip extends javax.swing.JDialog {
         jDCDateNaissance = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         lbNomVip.setText("Nom");
 

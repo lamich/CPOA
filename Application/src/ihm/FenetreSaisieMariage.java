@@ -66,6 +66,7 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
         test = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jTableGauche.setModel(leModelMariage);
         jScrollPane1.setViewportView(jTableGauche);
