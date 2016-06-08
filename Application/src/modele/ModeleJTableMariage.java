@@ -9,10 +9,7 @@ import accesAuxDonnees.DaoVip;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
-import metier.Evenement;
 import metier.VIP;
 
 /**

@@ -12,7 +12,6 @@ import java.util.List;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 import metier.Pays;
-import metier.VIP;
 
 
 public class ModeleJComboBox extends AbstractListModel implements ComboBoxModel {
