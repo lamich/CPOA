@@ -77,27 +77,22 @@ public class ModeleJTableEvenement extends AbstractTableModel {
         fireTableDataChanged();  // notification de modification des données à la vue
     }
 
-    public void insererMariage(Evenement event) {
-
-        try {
-            leDaoEvenement.insererMariage(event);
+    public String insererMariage(Evenement event) throws SQLException {
+        String erreur;
+        erreur = leDaoEvenement.insererMariage(event);
+        if (erreur == null) {
             leConteneur.add(event);
             this.fireTableDataChanged();
-
-        } catch (Exception e) {
-            System.out.println("Exception insererVip modele : " + e.getMessage());
         }
-
+        return erreur;
     }
 
-    public void rafraichir() {
-        try {
-            leConteneur.clear();
-            leDaoEvenement.lireLesEvenement(leConteneur);
-            this.fireTableDataChanged();
-        } catch (SQLException ex) {
-            Logger.getLogger(ModeleJTableMariage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void rafraichir() throws SQLException {
+
+        leConteneur.clear();
+        leDaoEvenement.lireLesEvenement(leConteneur);
+        this.fireTableDataChanged();
+
     }
 
 }

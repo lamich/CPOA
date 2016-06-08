@@ -86,8 +86,8 @@ public class DaoVip {
             System.out.println("Exception sup DAO : " + e.getMessage());
         }
     }
-    
-    public void lireVipMariage(List<VIP> lesvip ) throws SQLException{
+
+    public void lireVipMariage(List<VIP> lesvip) throws SQLException {
         String requete = "select numVip, nomVip, prenomVip from VIP ";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
@@ -102,5 +102,22 @@ public class DaoVip {
         }
         rset.close();
         pstmt.close();
+    }
+
+    public boolean rechercherMariage(int numvip) throws SQLException {
+        boolean resultat=true;
+//        String requete = "select codeStatut from VIP where numVip= ? ";
+        PreparedStatement pstmt = connexion.prepareStatement("select codeStatut from VIP where numVip= ? ");
+        pstmt.setInt(1, numvip);
+        ResultSet rset = pstmt.executeQuery(/*requete*/);
+        while (rset.next()) { 
+            String codestatut = rset.getString(1);
+            if (codestatut.contains("C") || codestatut.contains("D")) {
+               resultat = false;
+            }
+        }
+        rset.close();
+        pstmt.close();
+        return resultat;
     }
 }

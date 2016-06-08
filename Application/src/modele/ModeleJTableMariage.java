@@ -71,6 +71,12 @@ public class ModeleJTableMariage extends AbstractTableModel {
         leDaoVip.lireVipMariage(leConteneur);
         fireTableDataChanged();  // notification de modification des données à la vue
     }
+
+    public boolean rechercheMariage(int numvip) throws SQLException {
+        boolean res = leDaoVip.rechercherMariage(numvip);
+        return res;
+        
+    }
     
     
 

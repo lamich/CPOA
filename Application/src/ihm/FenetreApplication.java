@@ -4,6 +4,7 @@
  */
 package ihm;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,7 +26,7 @@ public class FenetreApplication extends javax.swing.JFrame {
     private ModeleJComboBox leModeleComboBox;
     private ModeleJTableMariage leModelMariage;
 
-    public FenetreApplication(ModeleJTableVip leModeleVip,ModeleJComboBox leModeleComboBox,ModeleJTableEvenement leModeleEvenement,ModeleJTableMariage leModelMariage) {
+    public FenetreApplication(ModeleJTableVip leModeleVip, ModeleJComboBox leModeleComboBox, ModeleJTableEvenement leModeleEvenement, ModeleJTableMariage leModelMariage) {
         this.leModeleVip = leModeleVip;
         this.leModeleComboBox = leModeleComboBox;
         this.leModeleEvenement = leModeleEvenement;
@@ -37,9 +38,8 @@ public class FenetreApplication extends javax.swing.JFrame {
             leModeleVip.chargerLesVip();
             leModeleComboBox.chargerPays();
             leModeleEvenement.chargerLesEvenement();
-            
-        } catch (Exception ex) {
-            Logger.getLogger(FenetreApplication.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -62,6 +62,7 @@ public class FenetreApplication extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEvenement = new javax.swing.JTable();
         jBAjouterMariage = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanelPhoto = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextField1 = new javax.swing.JTextField();
@@ -110,7 +111,7 @@ public class FenetreApplication extends javax.swing.JFrame {
                 .addComponent(btAjouterVip)
                 .addGap(70, 70, 70)
                 .addComponent(btSupprimerVip)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVipLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSPVip))
@@ -128,13 +129,22 @@ public class FenetreApplication extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Ajouter divorce");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelEvenementLayout = new javax.swing.GroupLayout(jPanelEvenement);
         jPanelEvenement.setLayout(jPanelEvenementLayout);
         jPanelEvenementLayout.setHorizontalGroup(
             jPanelEvenementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEvenementLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jBAjouterMariage)
+                .addGroup(jPanelEvenementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBAjouterMariage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -143,11 +153,13 @@ public class FenetreApplication extends javax.swing.JFrame {
             jPanelEvenementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEvenementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanelEvenementLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addComponent(jBAjouterMariage)
+                .addGap(112, 112, 112)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -165,7 +177,7 @@ public class FenetreApplication extends javax.swing.JFrame {
             jPanelPhotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPhotoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Photo", jPanelPhoto);
@@ -177,18 +189,18 @@ public class FenetreApplication extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(283, 283, 283))
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addComponent(jTabbedPane1))
         );
 
@@ -206,13 +218,13 @@ public class FenetreApplication extends javax.swing.JFrame {
     private void btAjouterVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAjouterVipActionPerformed
         try {
             VIP Vip = new VIP();
-            FenetreSaisieVip laSaisieVip = new FenetreSaisieVip(this, Vip,leModeleComboBox);
+            FenetreSaisieVip laSaisieVip = new FenetreSaisieVip(this, Vip, leModeleComboBox);
             if (laSaisieVip.doModal() == true) {
-            leModeleVip.insererVip(Vip);
-            leModeleVip.rafraichir();
+                leModeleVip.insererVip(Vip);
+                leModeleVip.rafraichir();
             }
         } catch (Exception e) {
-            System.out.println("Exception à l'insertion : " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Exception à l'insertion : " + e.getMessage(), "Erreur insertion", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btAjouterVipActionPerformed
 
@@ -221,30 +233,40 @@ public class FenetreApplication extends javax.swing.JFrame {
             int ligne = jTableVip.getSelectedRow();
             leModeleVip.supprimerVIP(ligne);
         } catch (Exception e) {
-            System.out.println("Exception à la suppression : " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Exception à la suppression : " + e.getMessage(), "Erreur suppression", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btSupprimerVipActionPerformed
 
     private void jBAjouterMariageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAjouterMariageActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             Evenement event = new Evenement();
-            FenetreSaisieMariage laSaisieMariage = new FenetreSaisieMariage(this,event,leModelMariage);
+            FenetreSaisieMariage laSaisieMariage = new FenetreSaisieMariage(this, event, leModelMariage);
             if (laSaisieMariage.doModal() == true) {
-            leModeleEvenement.insererMariage(event);
-            leModeleEvenement.rafraichir();
+                String erreur=leModeleEvenement.insererMariage(event);
+                if(erreur!=null){
+                    JOptionPane.showMessageDialog(this, "Exception à l'insertion : " + erreur, "Erreur insertion", JOptionPane.ERROR_MESSAGE);
+                }
+                leModeleEvenement.rafraichir();
+                leModeleVip.rafraichir();
             }
-        }catch(Exception e){
-            System.out.println("Exception à l'insertion : " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Exception à l'insertion : " + e.getMessage(), "Erreur insertion", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
+
+
     }//GEN-LAST:event_jBAjouterMariageActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAjouterVip;
     private javax.swing.JButton btSupprimerVip;
     private javax.swing.JButton jBAjouterMariage;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanelEvenement;
     private javax.swing.JPanel jPanelPhoto;
     private javax.swing.JPanel jPanelVip;

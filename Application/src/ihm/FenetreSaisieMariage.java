@@ -6,6 +6,10 @@
 package ihm;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import metier.Evenement;
 import modele.ModeleJTableMariage;
@@ -59,6 +63,7 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
         jLConjoint1 = new javax.swing.JLabel();
         jBAjoutVipConjoint = new javax.swing.JButton();
         jButtonAjouterMariage = new javax.swing.JButton();
+        test = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -129,8 +134,12 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
                                 .addGap(0, 38, Short.MAX_VALUE)))
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAjouterMariage, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -139,7 +148,9 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addContainerGap()
+                .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLVip1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -173,48 +184,62 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
 
     private void jBAjoutVipConjointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAjoutVipConjointActionPerformed
         // TODO add your handling code here:
-
-        int ligneDroit = jTableDroit.getSelectedRow();
-        int ligneGauche = jTableGauche.getSelectedRow();
-        if (ligneDroit == ligneGauche) {
-            JOptionPane.showMessageDialog(this, "Vous avez rentré deux fois la même personne");
+        if (jTableGauche.getSelectedRow() == -1 || jTableDroit.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Vous avez rentré aucune personne", "Erreur personne", JOptionPane.ERROR_MESSAGE);
         } else {
-            jTextFieldConjoint.setText((String) leModelMariage.getValueAt(ligneDroit, 1));
-            jTextFieldVip.setText((String) leModelMariage.getValueAt(ligneGauche, 1));
-            this.numVip=leModelMariage.getValueAt(ligneGauche,0).toString();
-            this.numConjoint = leModelMariage.getValueAt(ligneDroit,0).toString();
+            try {
+                int ligneDroit = jTableDroit.getSelectedRow(), ligneGauche = jTableGauche.getSelectedRow(), valeurGauche, valeurDroit;
+                valeurDroit = Integer.parseInt((String) leModelMariage.getValueAt(ligneDroit, 0));
+                valeurGauche = Integer.parseInt((String) leModelMariage.getValueAt(ligneGauche, 0));
+                if (ligneDroit == ligneGauche) {
+                    JOptionPane.showMessageDialog(this, "Vous avez rentré deux fois la même personne", "Erreur personne", JOptionPane.ERROR_MESSAGE);
+                } else if (leModelMariage.rechercheMariage(valeurGauche) == true && leModelMariage.rechercheMariage(valeurDroit) == false) {
+                    JOptionPane.showMessageDialog(this, "Votre Vip est déjà marié(e)", "Erreur vip", JOptionPane.ERROR_MESSAGE);
+                } else if (leModelMariage.rechercheMariage(valeurGauche) == false && leModelMariage.rechercheMariage(valeurDroit) == true) {
+                    JOptionPane.showMessageDialog(this, "Votre Conjoint(e) est déjà marié(e)", "Erreur conjoint(e)", JOptionPane.ERROR_MESSAGE);
+                } else if (leModelMariage.rechercheMariage(valeurGauche) == true && leModelMariage.rechercheMariage(valeurDroit) == true) {
+                    JOptionPane.showMessageDialog(this, "Vos deux personnes sont déjà mariées", "Erreur vip et conjoint(e)", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    jTextFieldConjoint.setText((String) leModelMariage.getValueAt(ligneDroit, 1));
+                    jTextFieldVip.setText((String) leModelMariage.getValueAt(ligneGauche, 1));
+                    this.numVip = leModelMariage.getValueAt(ligneGauche, 0).toString();
+                    this.numConjoint = leModelMariage.getValueAt(ligneDroit, 0).toString();
+
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
         }
+
 
     }//GEN-LAST:event_jBAjoutVipConjointActionPerformed
 
     private void jButtonAjouterMariageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterMariageActionPerformed
-      try {
+
+        try {
             if (jTextFieldVip.getText().isEmpty()) {
                 throw new Exception("champ Nom Vip vide");
             }
             Event.setNumVip(Integer.parseInt(numVip));
-            
+
             if (jTextFieldConjoint.getText().isEmpty()) {
                 throw new Exception("champ Nom Conjoint vide");
             }
             Event.setNumConjoint(Integer.parseInt(numConjoint));
-            
-            if(jDateChooserDateMariage.getCalendar()==null){
-                 throw new Exception("champ Date de naissance mal rempli");
+
+            if (jDateChooserDateMariage.getCalendar() == null) {
+                throw new Exception("champ Date de naissance mal rempli");
             }
             java.sql.Date temp = new java.sql.Date(jDateChooserDateMariage.getDate().getTime());
             Event.setDateMariage(temp);
-             
-                        
-             if(jTextFieldLieuMariage.getText().isEmpty())
-             {
-                 throw new Exception("champ Ville de mariage vide");
-             }
-             Event.setLieuMariage(jTextFieldLieuMariage.getText());
+            if (jTextFieldLieuMariage.getText().isEmpty()) {
+                throw new Exception("champ Ville de mariage vide");
+            }
+            Event.setLieuMariage(jTextFieldLieuMariage.getText());
             etatSortie = true;
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonAjouterMariageActionPerformed
 
@@ -237,7 +262,7 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldConjoint;
     private javax.swing.JTextField jTextFieldLieuMariage;
     private javax.swing.JTextField jTextFieldVip;
+    private javax.swing.JTextField test;
     // End of variables declaration//GEN-END:variables
 
- 
 }

@@ -5,6 +5,8 @@
  */
 package ihm;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import metier.VIP;
 import modele.ModeleJComboBox;
@@ -251,7 +253,17 @@ public class FenetreSaisieVip extends javax.swing.JDialog {
                  throw new Exception("champ Date de naissance mal rempli");
             }
             java.sql.Date temp = new java.sql.Date(jDCDateNaissance.getDate().getTime());
-            vip.setDateNaissance(temp);
+            java.util.Date date2 = temp;
+            SimpleDateFormat formatAMJ = new SimpleDateFormat("yyyy MM dd");
+            String dateInString = new SimpleDateFormat("yyyy MM dd").format(Calendar.getInstance().getTime());          //date du jour
+            java.util.Date date = formatAMJ.parse(dateInString); 
+            
+            if (date.compareTo(date2)==1) {
+                vip.setDateNaissance(temp);
+            }else{
+                throw new Exception("date supérieur à date d'aujourd'hui"); 
+            }
+            
             
              if(jTFLieuNaissanceVip.getText().isEmpty())
              {
