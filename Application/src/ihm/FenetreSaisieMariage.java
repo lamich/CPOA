@@ -6,6 +6,7 @@
 package ihm;
 
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import metier.Evenement;
 import modele.ModeleJTableMariage;
@@ -59,9 +60,9 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
         jLConjoint1 = new javax.swing.JLabel();
         jBAjoutVipConjoint = new javax.swing.JButton();
         jButtonAjouterMariage = new javax.swing.JButton();
-        test = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ajout d'un mariage");
         setResizable(false);
 
         jTableGauche.setModel(leModelMariage);
@@ -71,6 +72,12 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jTableDroit);
 
         jDateChooserDateMariage.setDateFormatString("yyyy MM dd");
+
+        jTextFieldLieuMariage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldLieuMariageActionPerformed(evt);
+            }
+        });
 
         jLDateMariage.setText("Date Mariage");
 
@@ -111,32 +118,26 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLLieuMariage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLDateMariage, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                    .addComponent(jLVip1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLConjoint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDateChooserDateMariage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldLieuMariage)
-                                    .addComponent(jTextFieldVip)
-                                    .addComponent(jTextFieldConjoint, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(jBAjoutVipConjoint, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 38, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLLieuMariage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLDateMariage, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jLVip1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLConjoint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooserDateMariage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jTextFieldLieuMariage)
+                            .addComponent(jTextFieldVip)
+                            .addComponent(jTextFieldConjoint, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAjouterMariage, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jBAjoutVipConjoint, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -145,9 +146,7 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLVip1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,14 +174,12 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
 
     private void jTextFieldVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldVipActionPerformed
         // TODO add your handling code here:
-
-
     }//GEN-LAST:event_jTextFieldVipActionPerformed
 
     private void jBAjoutVipConjointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAjoutVipConjointActionPerformed
         // TODO add your handling code here:
         if (jTableGauche.getSelectedRow() == -1 || jTableDroit.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Vous avez rentré aucune personne", "Erreur personne", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Vous n'avez pas rentré toutes les personnes", "Erreur personnes", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 int ligneDroit = jTableDroit.getSelectedRow(), ligneGauche = jTableGauche.getSelectedRow(), valeurGauche, valeurDroit;
@@ -227,8 +224,20 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
             if (jDateChooserDateMariage.getCalendar() == null) {
                 throw new Exception("champ Date de naissance mal rempli");
             }
-            java.sql.Date temp = new java.sql.Date(jDateChooserDateMariage.getDate().getTime());
-            Event.setDateMariage(temp);
+            java.sql.Date dateMariage = new java.sql.Date(jDateChooserDateMariage.getDate().getTime());
+            Date dateDivorce=leModelMariage.rechercherDateDivorce(numVip);
+            if(dateDivorce!=null){
+                if(dateDivorce.compareTo(dateMariage)==1){
+                    throw new Exception("date divorce vip est supperieur à la date du mariage");
+                }
+            }
+            dateDivorce=leModelMariage.rechercherDateDivorce(numConjoint);
+            if(dateDivorce!=null){
+                if(dateDivorce.compareTo(dateMariage)==1){
+                    throw new Exception("date divorce conjoint est supperieur à la date du mariage");
+                }
+            }
+            Event.setDateMariage(dateMariage);
             if (jTextFieldLieuMariage.getText().isEmpty()) {
                 throw new Exception("champ Ville de mariage vide");
             }
@@ -239,6 +248,10 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonAjouterMariageActionPerformed
+
+    private void jTextFieldLieuMariageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLieuMariageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldLieuMariageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,7 +272,6 @@ public class FenetreSaisieMariage extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldConjoint;
     private javax.swing.JTextField jTextFieldLieuMariage;
     private javax.swing.JTextField jTextFieldVip;
-    private javax.swing.JTextField test;
     // End of variables declaration//GEN-END:variables
 
 }

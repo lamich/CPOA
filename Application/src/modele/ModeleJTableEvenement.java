@@ -90,7 +90,12 @@ public class ModeleJTableEvenement extends AbstractTableModel {
         leConteneur.clear();
         leDaoEvenement.lireLesEvenement(leConteneur);
         this.fireTableDataChanged();
-
+    }
+    
+    public String insererDivorce(Evenement event) throws SQLException{
+        String erreur;
+        erreur = leDaoEvenement.insererDivorce(event);
+        return erreur;
     }
 
 }

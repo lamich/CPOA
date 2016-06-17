@@ -78,4 +78,38 @@ public class DaoEvenement {
         return erreur;
     }
 
+    public String insererDivorce(Evenement event){
+        String requete = "update EVENEMENT set dateDivorce =? where numVip=? and dateMariage=? and numConjoint=? and  lieuMariage=?";
+        PreparedStatement pstmt;
+        String erreur=null;
+        try {
+            pstmt = connexion.prepareStatement(requete);
+            pstmt.setDate(1, event.getDateDivorce());
+            pstmt.setInt(2, event.getNumVip());
+            pstmt.setDate(3, event.getDateMariage());
+            pstmt.setInt(4, event.getNumConjoint());
+            pstmt.setString(5, event.getLieuMariage());
+            pstmt.executeUpdate();
+            pstmt.close();
+
+            requete = "update VIP set codeStatut=? where numVip= ?";
+            pstmt = connexion.prepareStatement(requete);
+            pstmt.setString(1, "D");
+            pstmt.setInt(2, event.getNumVip());
+            pstmt.executeUpdate();
+            pstmt.close();
+
+            String requete2 = "update VIP set codeStatut=? where numVip= ?";
+            pstmt = connexion.prepareStatement(requete);
+            pstmt.setString(1, "D");
+            pstmt.setInt(2, event.getNumConjoint());
+            pstmt.executeUpdate();
+            pstmt.close();
+            
+        } catch (SQLException ex) {
+            erreur = ex.getMessage();
+            
+        }
+        return erreur;
+    }
 }

@@ -28,11 +28,7 @@ public class DaoPays {
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
         while (rset.next()) {       // traitement du résulat
-            
-            
-            String nomPays = rset.getString(1);
-            
-            
+            String nomPays = rset.getString(1);       
             Pays temp = new Pays(nomPays);
             lesPays.add(temp);
         }

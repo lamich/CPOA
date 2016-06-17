@@ -6,7 +6,9 @@
 package application;
 
 import accesAuxDonnees.DaoEvenement;
+import accesAuxDonnees.DaoFilm;
 import accesAuxDonnees.DaoPays;
+import accesAuxDonnees.DaoPhoto;
 import accesAuxDonnees.DaoVip;
 import accesAuxDonnees.SourceMySql;
 import ihm.FenetreApplication;
@@ -19,9 +21,14 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modele.ModeleJComboBox;
+import modele.ModeleJTableActeur;
 import modele.ModeleJTableEvenement;
+import modele.ModeleJTableFilm;
+import modele.ModeleJTableGenre;
 import modele.ModeleJTableMariage;
+import modele.ModeleJTableRealisateur;
 import modele.ModeleJTableVip;
+import modele.ModelePhoto;
 
 /**
  *
@@ -34,6 +41,8 @@ public class Appli {
     private static DaoVip daoVip;
     private static DaoPays daoPays;
     private static DaoEvenement daoEvenement;
+    private static DaoPhoto daoPhoto;
+    private static DaoFilm daoFilm;
     
     public static void main(String[] args) {
         
@@ -63,16 +72,23 @@ public class Appli {
             daoVip = new DaoVip(laConnexion);
             daoPays = new DaoPays(laConnexion);
             daoEvenement = new DaoEvenement(laConnexion);
+            daoPhoto = new DaoPhoto(laConnexion);
+            daoFilm = new DaoFilm(laConnexion);
             // les modèles de données avec le DAO à partir duquel se feront les échanges de données
             final ModeleJTableVip leModeleVip = new ModeleJTableVip(daoVip);
             final ModeleJComboBox leModeleComboBox = new ModeleJComboBox(daoPays);
             final ModeleJTableEvenement leModeleEvenement = new ModeleJTableEvenement(daoEvenement);
             final ModeleJTableMariage leModelMariage = new ModeleJTableMariage(daoVip);
+            final ModelePhoto leModelPhoto = new ModelePhoto(daoPhoto);
+            final ModeleJTableFilm leModelFilm = new ModeleJTableFilm(daoFilm);
+            final ModeleJTableRealisateur leModelRealisateur = new ModeleJTableRealisateur(daoFilm);
+            final ModeleJTableActeur leModelActeur = new ModeleJTableActeur(daoFilm);
+            final ModeleJTableGenre leModelGenre = new ModeleJTableGenre(daoFilm);
             // la fenetre principale de l'application qui tourne dans l'EDT
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new FenetreApplication(leModeleVip,leModeleComboBox,leModeleEvenement,leModelMariage).setVisible(true);
+                    new FenetreApplication(leModeleVip,leModeleComboBox,leModeleEvenement,leModelMariage,leModelPhoto,leModelFilm,leModelRealisateur,leModelActeur,leModelGenre).setVisible(true);
                 }
             });
         } catch (SQLException ex) {

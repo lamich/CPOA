@@ -8,6 +8,7 @@ package modele;
 import accesAuxDonnees.DaoVip;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import metier.VIP;
@@ -73,6 +74,11 @@ public class ModeleJTableMariage extends AbstractTableModel {
         boolean res = leDaoVip.rechercherMariage(numvip);
         return res;
         
+    }
+
+    public Date rechercherDateDivorce(String numVip) throws SQLException {
+        Date res = leDaoVip.rechercherDateDivorce(numVip);
+        return res;
     }
     
     

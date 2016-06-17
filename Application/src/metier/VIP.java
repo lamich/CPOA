@@ -45,6 +45,10 @@ public class VIP {
         this.nomVip = nomVip;
         this.prenomVip = prenomVip;
     }
+    public VIP(String numVip, String nomVip) {
+        this.numVip = numVip;
+        this.nomVip = nomVip;
+    }
     
 
     public VIP() { 

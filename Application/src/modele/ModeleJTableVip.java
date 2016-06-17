@@ -47,31 +47,22 @@ public class ModeleJTableVip extends AbstractTableModel {
     public Object getValueAt(int row, int column) {
         VIP Vip = leConteneur.get(row);
         if (column == 0) {
-
             return Vip.getNumVip();
         } else if (column == 1) {
-
             return Vip.getNomVip();
         } else if (column == 2) {
-
             return Vip.getPrenomVip();
         } else if (column == 3) {
-
             return Vip.getCivilite();
         } else if (column == 4) {
-
             return Vip.getDateNaissance();
         } else if (column == 5) {
-
             return Vip.getLieuNaissance();
         } else if (column == 6) {
-
             return Vip.getCodeRole();
         } else if (column == 7) {
-
             return Vip.getNomPays();
         } else if (column == 8) {
-
             return Vip.getCodeStatut();
         }
         return null;

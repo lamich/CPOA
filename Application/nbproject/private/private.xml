@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Cours/G6S3/CPOA/CPOA/Application/src/ihm/FenetreSaisieMariage.java</file>
+            <file>file:/D:/Cours/G6S3/CPOA/CPOA/Application/src/accesAuxDonnees/FTPDownloadFile.java</file>
+            <file>file:/D:/Cours/G6S3/CPOA/CPOA/Application/src/application/Appli.java</file>
+            <file>file:/D:/Cours/G6S3/CPOA/CPOA/Application/src/accesAuxDonnees/DaoPays.java</file>
+            <file>file:/D:/Cours/G6S3/CPOA/CPOA/Application/src/modele/ModelePhoto.java</file>
+            <file>file:/D:/Cours/G6S3/CPOA/CPOA/Application/src/modele/ModeleJTableActeur.java</file>
+            <file>file:/D:/Cours/G6S3/CPOA/CPOA/Application/src/ihm/FenetreApplication.java</file>
         </group>
     </open-files>
 </project-private>

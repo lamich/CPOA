@@ -120,6 +120,11 @@ public class FenetreSaisieVip extends javax.swing.JDialog {
         });
 
         jRbActeur.setText("Acteur");
+        jRbActeur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRbActeurActionPerformed(evt);
+            }
+        });
 
         jRbRealisateur.setText("Réalisateur");
 
@@ -319,6 +324,10 @@ public class FenetreSaisieVip extends javax.swing.JDialog {
     private void jTFLieuNaissanceVipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFLieuNaissanceVipActionPerformed
                 // TODO add your handling code here:
     }//GEN-LAST:event_jTFLieuNaissanceVipActionPerformed
+
+    private void jRbActeurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRbActeurActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRbActeurActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

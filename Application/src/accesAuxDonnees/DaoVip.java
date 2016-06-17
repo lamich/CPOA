@@ -103,19 +103,49 @@ public class DaoVip {
     }
 
     public boolean rechercherMariage(int numvip) throws SQLException {
-        boolean resultat=true;
-//        String requete = "select codeStatut from VIP where numVip= ? ";
+        boolean resultat = true;
         PreparedStatement pstmt = connexion.prepareStatement("select codeStatut from VIP where numVip= ? ");
         pstmt.setInt(1, numvip);
-        ResultSet rset = pstmt.executeQuery(/*requete*/);
-        while (rset.next()) { 
+        ResultSet rset = pstmt.executeQuery();
+        while (rset.next()) {
             String codestatut = rset.getString(1);
             if (codestatut.contains("C") || codestatut.contains("D")) {
-               resultat = false;
+                resultat = false;
             }
         }
         rset.close();
         pstmt.close();
         return resultat;
+    }
+
+    public Date rechercherDateDivorce(String numVip) throws SQLException {
+        
+        Date max=null;
+        PreparedStatement pstmt = connexion.prepareStatement("select codeStatut from VIP where numVip= ? ");
+        pstmt.setInt(1, Integer.parseInt(numVip));
+        ResultSet rset = pstmt.executeQuery();
+        while (rset.next()) {
+            String codestatut = rset.getString(1);
+            if (codestatut.contains("D")) {
+                PreparedStatement pstmt2 = connexion.prepareStatement("select dateDivorce from EVENEMENT where numVip= ? or numConjoint=? and dateDivorce!=null");
+                pstmt2.setInt(1, Integer.parseInt(numVip));
+                pstmt2.setInt(2, Integer.parseInt(numVip));
+                ResultSet rset2 = pstmt2.executeQuery();
+                while (rset2.next()) {
+                    if(max==null){
+                        max=rset2.getDate(1);
+                    }
+                    else
+                        if(max.compareTo(rset2.getDate(1))==-1){
+                            max=rset2.getDate(1);
+                        }
+                    
+
+                }
+            }
+        }
+        rset.close();
+        pstmt.close();
+        return max;
     }
 }
